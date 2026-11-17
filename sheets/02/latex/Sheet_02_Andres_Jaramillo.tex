@@ -33,14 +33,14 @@
 We start by noting that $\frac{\log\abs{\alpha - \frac{a}{q}}}{\log q} = \log_q\abs{\alpha - \frac{a}{q}}$. If this is -1, then this is the same as saying $1/q = \abs{\alpha - \frac{a}{q}}$. In the language of the proof of Dirichlet's theorem that we saw in class, this is the same as saying that we can get "within a box's distance" of $\alpha$ using the "boxes" of $a/q$. In this sense, a bigger $q$ implies smaller, more precise "boxes" that could, intuitively, get closer to $\alpha$, as they divide the number line in smaller portions.
 
 $\rightarrow$ Let $\alpha = \frac{c}{d} \in \Q, a, q \in \Z$ with $\gcd(c,d) = 1$.
-It is clear that $\abs{\alpha - \frac{a}{q}} \in \Q$. Further, by solving the inequality $\abs{\frac{c}{d} - \frac{a}{q}} \leq 1/q$ for $a$ we obtain that $\frac{qc}{d} - 1 \leq a \leq \frac{qc}{d} + 1$, which is always solveable for some integer as long as $\abs{q}$ is big enough. Thus, for $q$ sufficiently big, it it always possible to get "within a $q$-box's distance" of $\alpha$, implying $\forall_{q \in \N} \exists_{a \in \Z} \frac{\log\abs{\alpha - \frac{a}{q}}}{\log q} \leq -1$. Further, we have that
+It is clear that $\abs{\alpha - \frac{a}{q}} \in \Q$. We have that
 
 \begin{align*}
   \abs{\alpha - \frac{a}{q}} &= 
   \abs{\frac{c}{d} - \frac{a}{q}} = \abs{\frac{qc - ad}{qd}}
 \end{align*}
 
-Clearly $\frac{\log\abs{\alpha - \frac{a}{q}}}{\log q}$ to a fixed $q$ will be minimal if the numerator $\log\abs{\alpha - \frac{a}{q}}$ is minimal, and because of the monotonicity of $\log$, this happens when $\abs{qc - ad}$ is itself minimal (so 1). Because $\gcd(c,d) = 1$, there is an infinite number of pairs that fulfill this condition. Because of this, the minimality of the solution, and the fact that we're considering a $\liminf_{q\to\infty} \min \{ \dots \}$, we needn't consider solutions where $\abs{qc - ad} > 1$, since they'll produce larger values of $\log_q\abs{\alpha - \frac{a}{q}}$, which cannot be the $\liminf_{q\to\infty}$ of the minimum.
+Clearly $\frac{\log\abs{\alpha - \frac{a}{q}}}{\log q}$ to a fixed $q$ will be minimal if the numerator $\log\abs{\alpha - \frac{a}{q}}$ is minimal, and because of the monotonicity of $\log$, this happens when $\abs{qc - ad}$ is itself minimal (so 1). Because $\gcd(c,d) = 1$, there is an infinite number of pairs that fulfill this condition. We needn't consider solutions where $\abs{qc - ad} > 1$, since they'll produce larger values of $\log_q\abs{\alpha - \frac{a}{q}}$, which cannot be the $\liminf_{q\to\infty}\min\{ \dots \}$, since there are infinite pairs for which this value is smaller.
 
 Let $\abs{qc - ad} = 1$ and $\log_q(1/qd) = -z, z > 0$. This means 
 \begin{align*}
@@ -49,10 +49,11 @@ Let $\abs{qc - ad} = 1$ and $\log_q(1/qd) = -z, z > 0$. This means
   -z &= \log_q(1) - \log_q(qd) \\
   z &= \log_q(q) + \log_q(d) \\
   z &= 1 + \log_q(d)\\
-  \intertext{with $q \to \infty$ and $d$ fixed we get} \\
+  \intertext{So already $\log_q\abs{\alpha - \frac{a}{q}} \geq - 1 - \log_q(d)$. With $q \to \infty$ and $d$ fixed we get} \\
   z &= 1 + \log_q(d) \rightarrow 1
 \end{align*}
 
+Implying that $\min_a\{ \log_q\abs{\alpha - \frac{a}{q}} \} \rightarrow -z = -1$ along the infinite pairs for which the $\log_p$ is minimal, as described above.
 
 $\leftarrow$ Let $\alpha \in \R \setminus \Q$. As we learned in the lecture (or otherwise according to \cite[\nopp Corollary 1.2]{Everste1}), there is an infinite number of pairs $(a, q)$ such that $\abs{\alpha - \frac{a}{q}} \leq q^{-2}$ and $\gcd(a, q) = 1$, so $\log_q(\alpha - a/q) \leq -2$. This means that, for infinite pairs $\min\{\frac{\log\abs{\alpha - a/q}}{\log q}, a \in \Z, \gcd(a, q) = 1 \} \leq -2$. For this reason, 
 
@@ -64,7 +65,7 @@ $\leftarrow$ Let $\alpha \in \R \setminus \Q$. As we learned in the lecture (or 
 
 \textbf{Warning:} I wrote this paragraph after thinking about the meaning of the problem, but it is irrelevant in the proof and it's mostly just for myself.
 
-The intuitive interpretation is that, when $\alpha$ can be expressed as a rational number, it stands at the "edge" of some $d$-box. By subdividing each $d$-box in $q$ parts, we segment the space into $qd$-boxes, and we guarantee that a fraction of the edges of these smaller boxes coincide with all of the edges of the larger $d$-boxes, including $\alpha$. These $qd$-boxes are also the result of subdividing $q$-boxes into $d$ parts. Thus the question is, what edge of a $q$-box is closest to the edge of the $d$-box that corresponds to $\alpha$. Given $\gcd(q, d) = 1$, the "best possible case" is that the $qd$-box edge nearest to the $d$-box edge that corresponds to $\alpha$ is also a $q$-box edge, in which case the distance is $1/qd$. This happens for an infinite number of pairs $a, q$, and as the value of $q$ overtakes $d$ in magnitude, subdividing a $q$-box in $d$ parts to create $qd$-boxes represents a small change relative to the already minuscule size of $1/q$ (In terms of the value of $q$, if we took the $log_d$, the converse should be true).
+The intuitive interpretation is that, when $\alpha$ can be expressed as a rational number, it stands at the "edge" of some $d$-box. By subdividing each $d$-box in $q$ parts, we segment the space into $qd$-boxes, and we guarantee that a fraction of the edges of these smaller boxes coincide with all of the edges of the larger $d$-boxes, including $\alpha$. These $qd$-boxes are also the result of subdividing $q$-boxes into $d$ parts. Thus the question is, what edge of a $q$-box is closest to the edge of the $d$-box that corresponds to $\alpha$. Given $\gcd(q, d) = 1$, the "best possible case" is that the $qd$-box edge nearest to the $d$-box edge that corresponds to $\alpha$ is also a $q$-box edge, in which case the distance is $1/qd$. This happens for an infinite number of pairs $a, q$, and as the value of $q$ overtakes $d$ in magnitude, subdividing a $q$-box in $d$ parts to create $qd$-boxes represents a small change relative to the already minuscule size of $1/q$ (In terms of the value of $q$. If we took the $log_d$, the converse should be true).
 
 \section*{Exercise 2}
 \begin{proof}
@@ -76,7 +77,7 @@ Consider the partial sum
   \frac{(\sum^{k - 1}_{n=1} 10^{a^{2k} - a^{2n}}) + 1}{10^{a^{2k}}}
 \end{align*}
 
-All the terms in $(\sum^k_{n=2} 10^{a^{2k} - a^{2n}})$ are powers of 10 and thus divisible by 2 and 5, so the sum itself is also divisible by these factors. Since the numerator is this sum $+1$, then the numerator and this sum must be coprime, meaning in particular, that the numerator isn't divisible by 2 or 5. The denominator is obviously a power of 10 and thus its only prime divisors are 2 and 5. Thus, the numerator and denominator are coprime.
+All the terms in $(\sum^k_{n=2} 10^{a^{2k} - a^{2n}})$ are powers of 10 and thus divisible by 2 and 5, so the sum itself is also divisible by these factors. All of the exponents in the numerator are positive since $n\geq 3$ is big enough. Since the numerator is this sum $+1$, then the numerator and this sum must be coprime, meaning in particular, that the numerator isn't divisible by 2 or 5.The denominator is obviously a power of 10 and thus its only prime divisors are 2 and 5. Thus, the numerator and denominator are coprime.
 
 Set $p/q = \frac{(\sum^{k - 1}_{n=1} 10^{a^{2k} - a^{2n}}) + 1}{10^{a^{2k}}}$. Cleary we have 
 
@@ -86,7 +87,7 @@ Set $p/q = \frac{(\sum^{k - 1}_{n=1} 10^{a^{2k} - a^{2n}}) + 1}{10^{a^{2k}}}$. C
   \sum^{\infty}_{n=k+1} 10^{-a^{2n}} &< q^{-a} = 10^{-a^{2k+1}}
 \end{align*}
 
-Which is a single 1 preceeded by $10^{-a^{2k+1}}$ 0's. Consider that 
+Which is a single 1 preceeded by $-a^{2k+1}$ 0's. Consider that 
 \begin{align*}
   \sum^{\infty}_{n=k+1} 10^{-a^{2n}} &< 
   \sum^{\infty}_{j=a^{2k + 2}} 10^{-j} = 10^{-a^{2k + 2}} \sum^{\infty}_{j=0} 10^{-j} = 10^{-a^{2k + 2}} \frac{1}{1 - 10^{-1}} = 1.111\dots \times 10^{-a^{2k + 2}} < 1 \times 10^{-a^{2k+1}}
@@ -108,9 +109,9 @@ Because $a \geq 3$, we know $2k(-a + 1) < 0$ that gets more negative the bigger 
 
 
 \begin{proof}
-Since $f \in \Z[x]$, we conclude that $\alpha_1$ and $\alpha_2$ are algebraic integers (See \cite[41]{Everste1}), meaning there is a polynomial with coefficients in $\Z$ for which they are zeros. Consider now $\beta = \alpha_i - p/q$ with $p/q \in \Q$ and multiply by $q$ to produce $q\beta = \alpha_i - p$.  Both $\alpha_i$ and $p$ are algebraic integers (For $p$ consider $g = x - p \in \Z[x]$). As per \cite[\nopp Lemma 3.3]{Everste1}, we obtain that $q\beta$ is an algebraic integer, since it turns out algebraic integers are a closed ring. 
+Since $f \in \Z[x]$, we conclude that $\alpha_1$ and $\alpha_2$ are algebraic integers (See \cite[41]{Everste1}), meaning there is a polynomial with coefficients in $\Z$ for which they are zeros. Consider now $\beta = \alpha_i - p/q$ with $p/q \in \Q$ and multiply by $q$ to produce $q\beta = q\alpha_i - p$.  Both $q\alpha_i$ and $p$ are algebraic integers (For $p$ consider $g = x - p \in \Z[x]$). As per \cite[\nopp Lemma 3.3]{Everste1}, we obtain that $q\beta$ is an algebraic integer, since it turns out algebraic integers are a closed ring. 
 
-Because $\beta \in \Q[\alpha_1, \alpha_2]$, we know that the minimal polynomial of $\beta$ (call it $h_{\beta}$) has a degree at most as high as the extension, and that is degree 2 (See \cite[\nopp Corollary 3.23]{Everste1}). Observe that $f(x + p/q)$ is a polynomial of degree 2 for which $\beta$ is a zero. Thus $h_{\beta} = f(x + p/q)$. By constructing $h(x) = h_{\beta}(x/q)$, we obtain a polynomial of degree 2 of which $q\beta$ is a 0. Since clearly $q\beta \notin \Q$, the degree of its minimal polynomial must be at least 2. Thus, $h$ is the minimal polynomial of $q\beta$. Further, as per \cite[\nopp Lemma 3.4]{Everste1}, $h \in \Z[x]$. 
+Because $\beta \in \Q[\alpha_1, \alpha_2]$, we know that the minimal polynomial of $\beta$ (call it $h_{\beta}$) has a degree at most as high as the extension, and that is degree 2 (See \cite[\nopp Corollary 3.23]{Everste1}). We want to construct the minimal polynomial of $q\beta$. Observe that $f(x + p/q)$ is a polynomial of degree 2 for which $\beta$ is a zero. Thus $h_{\beta} = f(x + p/q)$. By constructing $l(x) = h_{\beta}(x/q)$, we obtain a polynomial of degree 2 of which $q\beta$ is a 0. Finally, we set $h(x) = q^2l(x)$ to ensure the highest coefficient is 1.  Since clearly $q\beta \notin \Q$, the degree of its minimal polynomial must be at least 2. Thus, $h$ is the minimal polynomial of $q\beta$. Further, as per \cite[\nopp Lemma 3.4]{Everste1}, $h \in \Z[x]$. 
 
 Let $\gamma$ be the other root of $h_{\beta}$. Clearly $q\gamma$ is also a zero of $h$. Thus we conclude that $h(0) = q^2 \gamma \beta \in \Z$ an in particular $\abs{q^2 \gamma \beta} \geq 1$ (again, since $h \in \Z[x]$). Define $\overline{|\beta|} = \max(\abs{\gamma}, \abs{\beta})$. We obtain
 
@@ -121,7 +122,7 @@ Let $\gamma$ be the other root of $h_{\beta}$. Clearly $q\gamma$ is also a zero 
   \abs{\alpha_i - p/q} &\geq q^{-2} \overline{|\beta|}^{-1} \\
 \end{align*}
 
-We're not done becasue $\overline{|\beta|}$ still depends on $p/q$. Consider that for this problem to be interesting, we're looking for pairs $p/q$ for which $\abs{\alpha_i - p/q} < 1$, since otherwise the inequality is true for any constant smaller than $q^2$ (pick $C = 1$). Solving this inequality for $p/q$ gives us $\alpha_i - 1 \leq p/q \leq \alpha_i + 1$. To every $\beta = \alpha + p/q$, we constructed $h_{\beta} = f(x + p/q)$, meaning the roots of $h_{\beta}$ (and thus $\overline{|\beta|}$) are the roots of $f$ shifted by $p/q$ to the left. Let $\eta$ be the other root of $f$ that isnt $\alpha$, and let $\overline{|\alpha|} = \max(\abs{\alpha}, \abs{\eta})$. Then $\overline{|\beta|} < \overline{|\alpha|} + \max\{p/q\} = \overline{|\alpha|} + \alpha_i + 1$, and so $\overline{|\beta|}^{-1} \geq (\overline{|\alpha|} + \alpha_i + 1)^{-1} = C$
+We're not done becasue $\overline{|\beta|}$ still depends on $p/q$. Consider that for this problem to be interesting, we're looking for pairs $p/q$ for which $\abs{\alpha_i - p/q} < 1$, since otherwise the inequality is true for any constant smaller than $q^2$ (pick $C = 1$). Solving this inequality for $p/q$ gives us $\alpha_i - 1 \leq p/q \leq \alpha_i + 1$. To every $\beta = \alpha - p/q$, we constructed $h_{\beta} = f(x + p/q)$, meaning the roots of $h_{\beta}$ (and thus $\overline{|\beta|}$) are the roots of $f$ shifted by $p/q$ to the left. Let $\eta$ be the other root of $f$ that isnt $\alpha$, and let $\overline{|\alpha|} = \max(\abs{\alpha}, \abs{\eta})$. Then $\overline{|\beta|} < \overline{|\alpha|} + \max\{\abs{p/q}\} = \overline{|\alpha|} + \abs{\alpha_i + 1} \leq 2\overline{|\alpha|} + 1$, and so set $\overline{|\beta|}^{-1} \geq (2\overline{|\alpha|} + 1)^{-1} = C$
 \end{proof}
 \printbibliography
 
